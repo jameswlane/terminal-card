@@ -19,7 +19,7 @@
     "semantic-release": "semantic-release",
     "setup": "npm i -g npmvet david depcheck types-checker commitizen semantic-release-cli all-contributors-cli",
     "test:ci": "jest --ci",
-    "test:coverage:ci": "jest --ci --coverage --testResultsProcessor=\"jest-junit\"",
+    "test:coverage:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit",
     "test:coverage:codecov": "codecov",
     "test:watch": "jest --watch",
     "ts:build": "tsc",
@@ -38,7 +38,7 @@
     "verify:tscheck": "types-checker"
   },
   "bin": {
-    "bitandbang": "./bin/card.js"
+    "jameswlane": "./bin/cli.js"
   },
   "repository": {
     "type": "git",
