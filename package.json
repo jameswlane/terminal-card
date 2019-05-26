@@ -29,13 +29,12 @@
     "tslint:fix": "tslint --config tslint.json --fix \"src/**/*.ts\"",
     "verify": "npm run verify:npmvet && npm run verify:david && npm run verify:audit && npm run verify:tscheck && npm run tslint && npm run test",
     "verify:offline": "npm run verify:npmvet && npm run tslint && npm run test",
-    "verify:circleci": "circleci config validate",
+    "verify:circleci": "npx circleci config validate",
     "verify:ci": "npm run verify:npmvet && npm run verify:audit && npm run test:ci",
-    "verify:check": "depcheck",
-    "verify:david": "david",
-    "verify:npmvet": "npmvet --renderer ci --strict",
+    "verify:david": "npx david",
+    "verify:npmvet": "npx npmvet --renderer ci --strict",
     "verify:audit": "npm audit fix",
-    "verify:tscheck": "types-checker"
+    "verify:tscheck": "npx typesync"
   },
   "bin": {
     "jameswlane": "./bin/cli.js"
@@ -75,7 +74,7 @@
   },
   "dependencies": {
     "@types/chalk": "2.2.0",
-    "boxen": "3.0.0",
+    "boxen": "3.2.0",
     "chalk": "2.4.2"
   },
   "config": {
