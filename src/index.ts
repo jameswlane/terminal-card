@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 // Define options for Boxen
 const options = {
-  borderStyle: 'round',
+  BorderStyle: 'round',
   margin: 1,
   padding: 1,
 };
