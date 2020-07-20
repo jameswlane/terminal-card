@@ -60,7 +60,7 @@
     "@types/node": "12.7.1",
     "@types/rimraf": "2.0.2",
     "@types/semantic-release": "15.13.0",
-    "codecov": "3.5.0",
+    "codecov": "3.7.1",
     "commitizen": "3.1.1",
     "cz-conventional-changelog": "3.0.2",
     "jest": "24.8.0",
