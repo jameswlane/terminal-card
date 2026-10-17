@@ -1,26 +1,19 @@
 {
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "lib",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es2015",
+    "rootDir": "src",
     "declaration": true,
-    "lib": ["es6"],
-    "moduleResolution": "node",
-    "pretty": true,
-    "removeComments": true,
+    "sourceMap": true,
     "strict": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "node",
-      "jest"
-    ]
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "types": ["node"]
   },
-  "include": [
-    "./typings/*.d.ts",
-    "./src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

@@ -1,43 +1,59 @@
-import * as boxen from 'boxen';
+import boxen, { type Options } from 'boxen';
 import chalk from 'chalk';
+import supportsHyperlinks from 'supports-hyperlinks';
 
 // Define options for Boxen
-const options = {
-  BorderStyle: 'round',
+const options: Options = {
+  borderColor: 'green',
+  borderStyle: 'round',
   margin: 1,
   padding: 1,
 };
 
-// Text + chalk definitions
+// Raw card information
 const data = {
-  github: chalk.cyan('https://github.com/jameswlane'),
-  handle: chalk.cyan('jameswlane'),
-  labelCard: chalk.white.bold('      Card:'),
-  labelGitHub: chalk.white.bold('    GitHub:'),
-  labelLinkedIn: chalk.white.bold('  LinkedIn:'),
-  labelTwitter: chalk.white.bold('   Twitter:'),
-  labelWeb: chalk.white.bold('       Web:'),
-  labelWork: chalk.white.bold('      Work:'),
-  linkedin: chalk.cyan('https://www.linkedin.com/in/jameswlane/'),
-  name: chalk.white('James W. Lane /'),
-  npx: chalk.white('npx jameswlane'),
-  twitter: chalk.cyan('https://twitter.com/jameswlane'),
-  web: chalk.cyan('https://jameswlane.com'),
-  work: chalk.white('Agile Coach at John Deere'),
+  github: 'https://github.com/jameswlane',
+  handle: 'jameswlane',
+  linkedin: 'https://www.linkedin.com/in/jameswlane/',
+  name: 'James W. Lane /',
+  npx: 'npx jameswlane',
+  web: 'https://jameswlane.com',
+  work: 'Agile Coach & Software Engineer',
+  x: 'https://x.com/jameswlane',
 };
 
+// Labels are padded to the longest one so the values line up
+const labels = ['Work:', 'X:', 'GitHub:', 'LinkedIn:', 'Web:', 'Card:'];
+const labelWidth = Math.max(...labels.map((label) => label.length));
+
+// OSC 8 makes the URLs clickable in supporting terminals, degrading to colored
+// (or, without color support, plain) text elsewhere
+const hyperlink = (text: string, url: string): string => {
+  if (chalk.level === 0) {
+    return text;
+  }
+  return supportsHyperlinks.stdout
+    ? `\u001B]8;;${url}\u0007${chalk.cyan.underline(text)}\u001B]8;;\u0007`
+    : chalk.cyan(text);
+};
+
+const row = (label: string, value: string): string =>
+  `${chalk.green.bold(label.padEnd(labelWidth))}  ${value}`;
+
 // Actual strings we're going to output
-const newline = '\n';
-const heading = `${data.name} ${data.handle}`;
-const working = `${data.labelWork}  ${data.work}`;
-const twittering = `${data.labelTwitter}  ${data.twitter}`;
-const githubing = `${data.labelGitHub}  ${data.github}`;
-const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`;
-const webing = `${data.labelWeb}  ${data.web}`;
-const carding = `${data.labelCard}  ${data.npx}`;
+const lines = [
+  `${chalk.white.bold(data.name)} ${chalk.green.bold(data.handle)}`,
+  '',
+  row('Work:', chalk.white(data.work)),
+  row('X:', hyperlink(data.x, data.x)),
+  row('GitHub:', hyperlink(data.github, data.github)),
+  row('LinkedIn:', hyperlink(data.linkedin, data.linkedin)),
+  row('Web:', hyperlink(data.web, data.web)),
+  '',
+  row('Card:', chalk.white(data.npx)),
+];
 
-// Put all our output together into a single variable so we can use boxen effectively
-const output = heading + newline + newline + working + newline + twittering + newline
-  + githubing + newline + linkedining + newline + webing + newline + newline + carding;
+// Unboxed card content, handy for scripts: `npx jameswlane --plain | grep github`
+export const plain = lines.join('\n');
 
-export default chalk.green(boxen(output, options));
+export default boxen(plain, options);

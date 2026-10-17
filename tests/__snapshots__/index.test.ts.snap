@@ -1,19 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Output should match snapshot 1`] = `
-"[32m[39m
-[32m   ┌──────────────────────────────────────────────────────────┐[39m
-[32m   │                                                          │[39m
-[32m   │   [37mJames W. Lane /[32m [36mjameswlane[32m                             │[39m
-[32m   │                                                          │[39m
-[32m   │   [37m[1m      Work:[22m[32m  [37mAgile Coach at John Deere[32m                 │[39m
-[32m   │   [37m[1m   Twitter:[22m[32m  [36mhttps://twitter.com/jameswlane[32m            │[39m
-[32m   │   [37m[1m    GitHub:[22m[32m  [36mhttps://github.com/jameswlane[32m             │[39m
-[32m   │   [37m[1m  LinkedIn:[22m[32m  [36mhttps://www.linkedin.com/in/jameswlane/[32m   │[39m
-[32m   │   [37m[1m       Web:[22m[32m  [36mhttps://jameswlane.com[32m                    │[39m
-[32m   │                                                          │[39m
-[32m   │   [37m[1m      Card:[22m[32m  [37mnpx jameswlane[32m                            │[39m
-[32m   │                                                          │[39m
-[32m   └──────────────────────────────────────────────────────────┘[39m
-[32m[39m"
+"
+   ╭────────────────────────────────────────────────────────╮
+   │                                                        │
+   │   James W. Lane / jameswlane                           │
+   │                                                        │
+   │   Work:      Agile Coach & Software Engineer           │
+   │   X:         https://x.com/jameswlane                  │
+   │   GitHub:    https://github.com/jameswlane             │
+   │   LinkedIn:  https://www.linkedin.com/in/jameswlane/   │
+   │   Web:       https://jameswlane.com                    │
+   │                                                        │
+   │   Card:      npx jameswlane                            │
+   │                                                        │
+   ╰────────────────────────────────────────────────────────╯
+"
 `;
